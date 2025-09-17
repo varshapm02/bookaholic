@@ -40,26 +40,41 @@ public class Library implements Searchable, Lendable {
     }
 
     @Override
-    public Book searchByTitle(String title) {for (int i = 0; i < books.size(); i++) {
-        if (books.get(i).getTitle().equalsIgnoreCase(title)) return books.get(i);
-    }
+    public Book searchByTitle(String title) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equalsIgnoreCase(title)) {
+                books.get(i).displayBook(); // print details here
+                return books.get(i);
+            }
+        }
+        System.out.println("No book found with title: " + title);
         return null;
     }
 
     @Override
-    public Book searchByAuthor(String author) {for (int i = 0; i < books.size(); i++) {
-        if (books.get(i).getAuthor().equalsIgnoreCase(author)) return books.get(i);
-    }
+    public Book searchByAuthor(String author) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getAuthor().equalsIgnoreCase(author)) {
+                books.get(i).displayBook(); // print details here
+                return books.get(i);
+            }
+        }
+        System.out.println("No book found by author: " + author);
         return null;
     }
 
     @Override
     public Book searchByISBN(String isbn) {
         for (int i = 0; i < books.size(); i++) {
-        if (books.get(i).getISBN().equals(isbn)) return books.get(i);
-    }
+            if (books.get(i).getISBN().equals(isbn)) { // ISBN is case-sensitive
+                books.get(i).displayBook(); // print details here
+                return books.get(i);
+            }
+        }
+        System.out.println("No book found with ISBN: " + isbn);
         return null;
     }
+
     public void displayAvailableBooks() {
         System.out.println("Available Books in Library:");
         for (int i = 0; i < books.size(); i++) {

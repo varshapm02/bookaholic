@@ -42,7 +42,8 @@ public class LibraryManagementSystem {
         System.out.println("\nAfter borrowing the books from patrons");
         library.displayAvailableBooks();
 
-
-
+        //Implenting search functionality
+        System.out.println("Searching by title of the book");
+        Book b1 = library.searchByTitle("Shiva triolgy");
     }
 }
