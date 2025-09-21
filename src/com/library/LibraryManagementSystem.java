@@ -3,10 +3,13 @@ package com.library;
 import com.library.books.Book;
 import com.library.management.Library;
 import com.library.members.Patron;
+import com.library.payments.Payment;
+import com.library.payments.PaymentService;
 
 public class LibraryManagementSystem {
     public static void main(String[] args) {
         Library library = new Library();
+        PaymentService paymentService = new PaymentService();
 
         //Book details
         Book book1 = new Book("I too had a love story", "Chetan Bhagat", "ISBN001", 1949, "Fiction", 2);
@@ -30,6 +33,14 @@ public class LibraryManagementSystem {
         library.addPatron(patron1);
         library.addPatron(patron2);
 
+        //payment by patron for membership
+        paymentService.processPayment(new Payment("P001",100,"Monthly Membership","20/9/2025"));
+        paymentService.processPayment(new Payment("P002",1000,"Yearly Membership","14/9/2025"));
+        paymentService.processPayment(new Payment("P003",100,"Monthly Membership","10/9/2025"));
+        paymentService.processPayment(new Payment("P004",100,"Monthly Membership","20/9/2025"));
+        paymentService.displayAllPayments();
+
+
         //operations
         library.checkoutBook(book1, patron1);
         library.checkoutBook(book1, patron2);
@@ -43,7 +54,11 @@ public class LibraryManagementSystem {
         library.displayAvailableBooks();
 
         //Implenting search functionality
-        System.out.println("Searching by title of the book");
+        System.out.println("\nSearching by title of the book\n");
         Book b1 = library.searchByTitle("Shiva triolgy");
+
+        library.returnBook(book1,patron2);
+        System.out.println("\n After returning book by patron\n");
+        library.displayAvailableBooks();
     }
 }

@@ -9,6 +9,7 @@ public class Patron {
     private String name;
     private String id;
     private List<Book> borrowedBooks;
+    private double outstandingBalance = 0.0;
 
     public Patron(String name, String id) {
         this.name = name;
@@ -31,5 +32,16 @@ public class Patron {
 
     public void displayPatron() {
         System.out.println(name + " (ID: " + id + ")");
+    }
+    public void addFine(double amount) {
+        outstandingBalance += amount;
+    }
+
+    public double getOutstandingBalance() {
+        return outstandingBalance;
+    }
+
+    public void clearBalance() {
+        outstandingBalance = 0.0;
     }
 }

@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library implements Searchable, Lendable {
-    private List<Book> books;
-    private List<Patron> patrons;
+        private List<Book> books;
+        private List<Patron> patrons;
 
     public Library() {
         books = new ArrayList<Book>();
